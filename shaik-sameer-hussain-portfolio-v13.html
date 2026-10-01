@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shaik Sameer Hussain — Data Analyst | SQL, Power BI, Python</title>
+  <meta name="description" content="Data Analyst in Hyderabad building SQL Server, Power BI and Python analytics that turn transactional data into margin, fraud and access insights." />
+  <meta property="og:title" content="Shaik Sameer Hussain — Data Analyst | SQL, Power BI, Python" />
+  <meta property="og:description" content="Data Analyst in Hyderabad building SQL Server, Power BI and Python analytics that turn transactional data into margin, fraud and access insights." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --radius: 0.75rem;
+      --background: oklch(0.19 0.035 245);
+      --foreground: oklch(0.96 0.008 240);
+      --card: oklch(0.235 0.036 245);
+      --card-foreground: oklch(0.96 0.008 240);
+      --popover: oklch(0.235 0.036 245);
+      --popover-foreground: oklch(0.96 0.008 240);
+      --primary: oklch(0.79 0.14 178);
+      --primary-foreground: oklch(0.18 0.04 220);
+      --secondary: oklch(0.28 0.04 245);
+      --secondary-foreground: oklch(0.95 0.01 240);
+      --muted: oklch(0.27 0.033 245);
+      --muted-foreground: oklch(0.72 0.025 240);
+      --accent: oklch(0.3 0.05 245);
+      --accent-foreground: oklch(0.96 0.008 240);
+      --destructive: oklch(0.63 0.2 25);
+      --destructive-foreground: oklch(0.98 0.005 240);
+      --border: oklch(0.33 0.035 245);
+      --input: oklch(0.33 0.035 245);
+      --ring: oklch(0.79 0.14 178);
+      --surface: oklch(0.22 0.035 245);
+      --surface-foreground: oklch(0.96 0.008 240);
+      --highlight: oklch(0.82 0.15 82);
+      --highlight-foreground: oklch(0.2 0.04 60);
+
+      --gradient-hero: radial-gradient(
+          1100px 520px at 12% -10%,
+          color-mix(in oklab, var(--primary) 22%, transparent),
+          transparent
+        ),
+        radial-gradient(
+          900px 480px at 92% 0%,
+          color-mix(in oklab, var(--highlight) 14%, transparent),
+          transparent
+        );
+      --gradient-text: linear-gradient(100deg, var(--primary), var(--highlight));
+      --shadow-elegant: 0 24px 60px -28px color-mix(in oklab, var(--primary) 40%, transparent);
+
+      --stack-top: 5.5rem;
+      --stack-step: 1.25rem;
+      --project-tint-0: var(--primary);
+      --project-tint-1: var(--highlight);
+      --project-tint-2: oklch(0.72 0.14 220);
+      --project-tint-3: oklch(0.74 0.12 300);
+    }
+
+    @media (max-width: 1023px) {
+      :root { --stack-top: 5rem; --stack-step: 0.85rem; }
+    }
+    @media (max-width: 767px) {
+      :root { --stack-top: 4.75rem; --stack-step: 0.5rem; }
+    }
+
+    * { box-sizing: border-box; border-color: var(--border); }
+
+    html {
+      scroll-behavior: smooth;
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='6' fill='%232DD4A0' fill-opacity='0.85'/%3E%3Ccircle cx='12' cy='12' r='10' stroke='%232DD4A0' stroke-width='1.5' stroke-opacity='0.35' fill='none'/%3E%3C/svg%3E") 12 12, auto;
+    }
+
+    a, button, [role='button'], input, textarea, select, summary {
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='6' fill='%232DD4A0' fill-opacity='0.85'/%3E%3Ccircle cx='12' cy='12' r='10' stroke='%232DD4A0' stroke-width='1.5' stroke-opacity='0.35' fill='none'/%3E%3C/svg%3E") 12 12, pointer;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--background);
+      color: var(--foreground);
+      font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+    }
+
+    h1, h2, h3, h4 { font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif; letter-spacing: -0.02em; margin: 0; }
+
+    .font-display { font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif; }
+    .font-mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+
+    .hero-bg {
+      background-image: var(--gradient-hero);
+    }
+
+    .grid-lines {
+      background-image:
+        linear-gradient(color-mix(in oklab, var(--border) 55%, transparent) 1px, transparent 1px),
+        linear-gradient(90deg, color-mix(in oklab, var(--border) 55%, transparent) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(70% 60% at 50% 0%, black, transparent);
+      -webkit-mask-image: radial-gradient(70% 60% at 50% 0%, black, transparent);
+    }
+
+    .text-gradient {
+      background-image: var(--gradient-text);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background-color: var(--surface);
+      padding: 0.25rem 0.7rem;
+      font-size: 0.8rem;
+      color: var(--muted-foreground);
+    }
+
+    .link-underline {
+      position: relative;
+      text-decoration: none;
+      color: inherit;
+    }
+    .link-underline::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      height: 1px;
+      width: 100%;
+      background-color: currentColor;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+    .link-underline:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .card-elevated {
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .card-elevated:hover {
+      transform: translateY(-3px);
+      border-color: color-mix(in oklab, var(--primary) 45%, var(--border));
+      box-shadow: var(--shadow-elegant);
+    }
+
+    .project-card-0 { --card-tint: var(--project-tint-0); }
+    .project-card-1 { --card-tint: var(--project-tint-1); }
+    .project-card-2 { --card-tint: var(--project-tint-2); }
+    .project-card-3 { --card-tint: var(--project-tint-3); }
+
+    [class*="project-card-"] {
+      background-color: color-mix(in oklab, var(--card-tint) 14%, var(--card));
+      border-color: color-mix(in oklab, var(--card-tint) 52%, var(--border));
+    }
+    [class*="project-card-"]:hover {
+      border-color: color-mix(in oklab, var(--card-tint) 65%, var(--border));
+      box-shadow:
+        0 24px 60px -28px color-mix(in oklab, var(--card-tint) 35%, transparent),
+        var(--shadow-elegant);
+    }
+
+    @keyframes reveal-up {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      will-change: transform, opacity;
+    }
+    .reveal.is-visible {
+      animation: reveal-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      animation-delay: var(--reveal-delay, 0ms);
+    }
+
+    .hero-enter {
+      opacity: 0;
+      animation: reveal-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+      animation-delay: var(--reveal-delay, 0ms);
+    }
+
+    .hero-name {
+      display: inline-flex;
+      flex-wrap: wrap;
+      font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+      font-size: clamp(2.5rem, 7vw, 5.5rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      background-image: linear-gradient(100deg, var(--primary), var(--highlight));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+      .reveal { opacity: 1 !important; }
+    }
+
+    /* Gallery modal */
+    .gallery-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      background-color: color-mix(in oklab, var(--background) 95%, transparent);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 1rem;
+    }
+    @media (min-width: 768px) {
+      .gallery-overlay { padding: 2rem; }
+    }
+    .gallery-container {
+      margin: 0 auto;
+      display: flex;
+      height: 100%;
+      width: 100%;
+      max-width: 72rem;
+      flex-direction: column;
+    }
+    .gallery-grid {
+      margin-top: 1.25rem;
+      flex: 1 1 auto;
+      overflow: auto;
+      padding-right: 0.25rem;
+    }
+    .gallery-grid-inner {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    @media (min-width: 640px) {
+      .gallery-grid-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (min-width: 1024px) {
+      .gallery-grid-inner { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    .gallery-thumb {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background-color: var(--card);
+      text-align: left;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      padding: 0;
+      color: inherit;
+      font: inherit;
+    }
+    .gallery-thumb:hover {
+      transform: translateY(-4px);
+      border-color: color-mix(in oklab, var(--primary) 60%, var(--border));
+    }
+    .gallery-thumb-image {
+      border-bottom: 1px solid var(--border);
+      background-color: var(--surface);
+      padding: 0.5rem;
+    }
+    .gallery-thumb-image img {
+      height: 10rem;
+      width: 100%;
+      border-radius: 0.375rem;
+      object-fit: contain;
+    }
+    .gallery-thumb-body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      gap: 0.375rem;
+      padding: 1rem;
+    }
+    .gallery-full {
+      margin-top: 1rem;
+      flex: 1 1 auto;
+      overflow: auto;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background-color: var(--card);
+      padding: 0.5rem;
+    }
+    .gallery-full img {
+      margin: 0 auto;
+      height: auto;
+      max-height: 100%;
+      width: auto;
+      max-width: 100%;
+      object-fit: contain;
+    }
+    .gallery-controls {
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="min-h-screen" style="background-color: var(--background);">
+    <header style="position: sticky; top: 0; z-index: 50; border-bottom: 1px solid color-mix(in oklab, var(--border) 70%, transparent); background-color: color-mix(in oklab, var(--background) 80%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
+      <nav style="margin: 0 auto; display: flex; max-width: 72rem; align-items: center; justify-content: space-between; padding: 1rem 1.5rem;">
+        <a href="#top" class="font-display" style="font-size: 0.875rem; font-weight: 600; letter-spacing: -0.025em; text-decoration: none; color: var(--foreground);">
+          Shaik Sameer Hussain
+          <span style="margin-left: 0.5rem; font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif; font-size: 0.75rem; font-weight: 400; color: var(--muted-foreground);">Data Analyst</span>
+        </a>
+        <ul style="display: none; gap: 1.75rem; list-style: none; margin: 0; padding: 0; font-size: 0.875rem; color: var(--muted-foreground);" class="md-flex">
+          <li><a href="#about" class="link-underline">About</a></li>
+          <li><a href="#projects" class="link-underline">Projects</a></li>
+          <li><a href="#experience" class="link-underline">Experience</a></li>
+          <li><a href="#skills" class="link-underline">Skills</a></li>
+          <li><a href="#contact" class="link-underline">Contact</a></li>
+        </ul>
+        <a href="mailto:shaik.sameer.hussain12@gmail.com" style="border-radius: 999px; background-color: var(--primary); padding: 0.5rem 1rem; font-size: 0.75rem; font-weight: 600; color: var(--primary-foreground); text-decoration: none; transition: opacity 0.2s;">Hire me</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <!-- Hero -->
+      <section class="hero-bg" style="position: relative; overflow: hidden; border-bottom: 1px solid var(--border);">
+        <div class="grid-lines" style="pointer-events: none; position: absolute; inset: 0;" aria-hidden="true"></div>
+        <div style="position: relative; margin: 0 auto; max-width: 72rem; padding: 6rem 1.5rem;" class="md-py-32">
+          <p class="chip hero-enter font-mono" style="--reveal-delay: 0ms;">Hyderabad, India · Open to Data Analyst roles</p>
+
+          <div class="hero-enter" style="--reveal-delay: 60ms; margin-top: 1rem;">
+            <h2 class="hero-name">Shaik Sameer Hussain</h2>
+          </div>
+
+          <h1 class="hero-enter" style="--reveal-delay: 220ms; margin-top: 1.5rem; max-width: 56rem; font-size: clamp(1.75rem, 5vw, 3.75rem); line-height: 1.05; font-weight: 700;">
+            I turn messy transactional data into <span class="text-gradient">decisions leaders can act on</span>.
+          </h1>
+          <p class="hero-enter" style="--reveal-delay: 340ms; margin-top: 1.5rem; max-width: 42rem; font-size: 1.125rem; color: var(--muted-foreground);">
+            Data Analyst skilled in SQL (T-SQL), Power BI and Python. I build end-to-end analytics — data models, exploratory analysis and stakeholder-ready dashboards — across finance, fraud detection, retail and healthcare.
+          </p>
+          <div class="hero-enter" style="--reveal-delay: 440ms; margin-top: 2.25rem; display: flex; flex-wrap: wrap; gap: 0.75rem;">
+            <a href="#projects" style="border-radius: 999px; background-color: var(--primary); padding: 0.75rem 1.5rem; font-size: 0.875rem; font-weight: 600; color: var(--primary-foreground); text-decoration: none; transition: transform 0.2s, opacity 0.2s;">View case studies</a>
+            <a href="https://www.linkedin.com/in/shaik-sameer-hussain-425a012bb/" target="_blank" rel="noreferrer" style="border-radius: 999px; border: 1px solid var(--border); background-color: var(--surface); padding: 0.75rem 1.5rem; font-size: 0.875rem; font-weight: 600; color: var(--foreground); text-decoration: none; transition: transform 0.2s, border-color 0.2s;">LinkedIn</a>
+            <a href="https://github.com/ShaikSameerHussain12" target="_blank" rel="noreferrer" style="border-radius: 999px; border: 1px solid var(--border); background-color: var(--surface); padding: 0.75rem 1.5rem; font-size: 0.875rem; font-weight: 600; color: var(--foreground); text-decoration: none; transition: transform 0.2s, border-color 0.2s;">GitHub</a>
+            <a href="https://drive.google.com/file/d/1DjuAi1WfMU4ZYV_NatVTJuYfkZ5ZDI6e/view?usp=sharing" target="_blank" rel="noreferrer" style="border-radius: 999px; border: 1px solid var(--border); background-color: var(--surface); padding: 0.75rem 1.5rem; font-size: 0.875rem; font-weight: 600; color: var(--foreground); text-decoration: none; transition: transform 0.2s, border-color 0.2s;">View resume</a>
+          </div>
+
+          <dl style="margin-top: 4rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; overflow: hidden; border-radius: var(--radius); border: 1px solid var(--border); background-color: var(--border);" class="lg-grid-cols-4">
+            <div class="reveal" style="--reveal-delay: 560ms; background-color: var(--card); padding: 1.5rem;">
+              <dt class="font-display" style="font-size: 1.875rem; font-weight: 700; color: var(--primary);">9.37</dt>
+              <dd style="margin-top: 0.25rem; font-size: 0.875rem; font-weight: 500;">CGPA / 10</dd>
+              <dd style="margin-top: 0.25rem; font-size: 0.75rem; color: var(--muted-foreground);">B.E. CSE (Data Science)</dd>
+            </div>
+            <div class="reveal" style="--reveal-delay: 650ms; background-color: var(--card); padding: 1.5rem;">
+              <dt class="font-display" style="font-size: 1.875rem; font-weight: 700; color: var(--primary);">4</dt>
+              <dd style="margin-top: 0.25rem; font-size: 0.875rem; font-weight: 500;">End-to-end analytics projects</dd>
+              <dd style="margin-top: 0.25rem; font-size: 0.75rem; color: var(--muted-foreground);">SQL → Power BI → recommendation</dd>
+            </div>
+            <div class="reveal" style="--reveal-delay: 740ms; background-color: var(--card); padding: 1.5rem;">
+              <dt class="font-display" style="font-size: 1.875rem; font-weight: 700; color: var(--primary);">70+</dt>
+              <dd style="margin-top: 0.25rem; font-size: 0.875rem; font-weight: 500;">T-SQL queries written</dd>
+              <dd style="margin-top: 0.25rem; font-size: 0.75rem; color: var(--muted-foreground);">Across relational data models</dd>
+            </div>
+            <div class="reveal" style="--reveal-delay: 830ms; background-color: var(--card); padding: 1.5rem;">
+              <dt class="font-display" style="font-size: 1.875rem; font-weight: 700; color: var(--primary);">2,500+</dt>
+              <dd style="margin-top: 0.25rem; font-size: 0.875rem; font-weight: 500;">Transactions analysed</dd>
+              <dd style="margin-top: 0.25rem; font-size: 0.75rem; color: var(--muted-foreground);">Fraud & risk decomposition</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about" style="border-bottom: 1px solid var(--border);">
+        <div style="margin: 0 auto; max-width: 72rem; padding: 5rem 1.5rem;" class="md-py-24">
+          <div class="reveal">
+            <p class="font-mono" style="font-size: 0.75rem; letter-spacing: 0.15em; color: var(--primary); text-transform: uppercase;">01 — About</p>
+            <h2 style="margin-top: 0.75rem; max-width: 48rem; font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 700;">Analyst who ships the recommendation, not just the chart</h2>
+          </div>
+          <div style="margin-top: 3rem; display: grid; gap: 2.5rem;" class="md-grid-cols-2">
+            <div class="reveal" style="display: flex; flex-direction: column; gap: 1rem; color: var(--muted-foreground);">
+              <p>I'm a Computer Science (Data Science) undergraduate at Lords Institute of Engineering and Technology, Hyderabad, carrying a 9.37/10 CGPA and graduating in 2027. My work sits where SQL modelling meets business framing: I dig into the data until the number has a cause, then put it in front of stakeholders with a clear next step.</p>
+              <p>Every project below started with a raw dataset and ended with a policy recommendation — a discount threshold, a fraud-flag redesign, a segmentation rebuild, an infrastructure investment priority.</p>
+              <p style="color: var(--foreground);">Coursework: Machine Learning · DBMS · Exploratory Data Analysis · Probability & Statistics · Data Visualization · Data Warehousing.</p>
+            </div>
+            <div class="reveal card-elevated" style="--reveal-delay: 140ms; padding: 1.5rem;">
+              <h3 style="font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; color: var(--primary); text-transform: uppercase;">Education</h3>
+              <p class="font-display" style="margin-top: 0.75rem; font-size: 1.125rem; font-weight: 600;">B.E. Computer Science (Data Science)</p>
+              <p style="font-size: 0.875rem; color: var(--muted-foreground);">Lords Institute of Engineering and Technology</p>
+              <p class="font-mono" style="margin-top: 0.25rem; font-size: 0.75rem; color: var(--muted-foreground);">2023 – 2027 · CGPA 9.37/10 · Hyderabad</p>
+
+              <h3 style="margin-top: 2rem; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; color: var(--primary); text-transform: uppercase;">Leadership</h3>
+              <p class="font-display" style="margin-top: 0.75rem; font-size: 1.125rem; font-weight: 600;">Microsoft Learn Student Ambassador</p>
+              <p style="font-size: 0.875rem; color: var(--muted-foreground);">Beta tier (2024 – present) — progressed from Alpha through consistent technical contributions, hackathons and programming contests.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects" style="border-bottom: 1px solid var(--border);">
+        <div style="margin: 0 auto; max-width: 72rem; padding: 5rem 1.5rem;" class="md-py-24">
+          <div class="reveal">
+            <p class="font-mono" style="font-size: 0.75rem; letter-spacing: 0.15em; color: var(--primary); text-transform: uppercase;">02 — Case studies</p>
+            <h2 style="margin-top: 0.75rem; max-width: 48rem; font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 700;">Four analyses, four business decisions</h2>
+          </div>
+          <div id="projects-stack" style="position: relative; margin-top: 3rem;">
+            <!-- Project cards will be injected here -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience -->
+      <section id="experience" style="border-bottom: 1px solid var(--border);">
+        <div style="margin: 0 auto; max-width: 72rem; padding: 5rem 1.5rem;" class="md-py-24">
+          <div class="reveal">
+            <p class="font-mono" style="font-size: 0.75rem; letter-spacing: 0.15em; color: var(--primary); text-transform: uppercase;">03 — Experience</p>
+            <h2 style="margin-top: 0.75rem; max-width: 48rem; font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 700;">Applied analytics in production data</h2>
+          </div>
+          <div class="reveal card-elevated" style="margin-top: 3rem; padding: 1.75rem;" class="md-p-9">
+            <div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.5rem;">
+              <h3 class="font-display" style="font-size: 1.25rem; font-weight: 600;" class="md-text-2xl">Data Science Intern · Manac Infotech</h3>
+              <span class="font-mono" style="font-size: 0.75rem; color: var(--muted-foreground);">Jul – Aug 2025 · India</span>
+            </div>
+            <ul style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem; font-size: 0.875rem; color: var(--muted-foreground); list-style: none; padding: 0;">
+              <li style="display: flex; gap: 0.75rem;"><span style="margin-top: 0.5rem; width: 0.375rem; height: 0.375rem; flex-shrink: 0; border-radius: 999px; background-color: var(--highlight);"></span><span>Engineered a Python-based anomaly detection model to flag water-meter tampering and theft across household accounts.</span></li>
+              <li style="display: flex; gap: 0.75rem;"><span style="margin-top: 0.5rem; width: 0.375rem; height: 0.375rem; flex-shrink: 0; border-radius: 999px; background-color: var(--highlight);"></span><span>Developed a real-time usage-monitoring dashboard (Python, Matplotlib) tracking consumption trends and surfacing high-risk accounts.</span></li>
+              <li style="display: flex; gap: 0.75rem;"><span style="margin-top: 0.5rem; width: 0.375rem; height: 0.375rem; flex-shrink: 0; border-radius: 999px; background-color: var(--highlight);"></span><span>Cut false-positive tamper alerts by engineering consumption-pattern features (rolling usage deltas, time-of-day anomalies) and validating flagged accounts against confirmed theft cases; presented findings to cross-functional stakeholders.</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section id="skills" style="border-bottom: 1px solid var(--border);">
+        <div style="margin: 0 auto; max-width: 72rem; padding: 5rem 1.5rem;" class="md-py-24">
+          <div class="reveal">
+            <p class="font-mono" style="font-size: 0.75rem; letter-spacing: 0.15em; color: var(--primary); text-transform: uppercase;">04 — Toolkit</p>
+            <h2 style="margin-top: 0.75rem; max-width: 48rem; font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 700;">Technical skills</h2>
+          </div>
+          <div id="skills-grid" style="margin-top: 3rem; display: grid; gap: 1.5rem;" class="md-grid-cols-2">
+            <!-- Skills injected here -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="hero-bg" style="border-top: 1px solid var(--border);">
+        <div class="reveal" style="margin: 0 auto; max-width: 72rem; padding: 6rem 1.5rem; text-align: center;">
+          <h2 style="font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 700;">Looking for an analyst who closes the loop?</h2>
+          <p style="margin: 1rem auto 0; max-width: 36rem; color: var(--muted-foreground);">I'm open to Data Analyst and Business Intelligence roles and internships. Happy to walk you through any dashboard or query in these case studies.</p>
+          <div style="margin-top: 2.25rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem;">
+            <a href="mailto:shaik.sameer.hussain12@gmail.com" style="border-radius: 999px; background-color: var(--primary); padding: 0.75rem 1.5rem; font-size: 0.875rem; font-weight: 600; color: var(--primary-foreground); text-decoration: none; transition: transform 0.2s, opacity 0.2s;">shaik.sameer.hussain12@gmail.com</a>
+            <a href="tel:+917569283071" style="border-radius: 999px; border: 1px solid var(--border); background-color: var(--surface); padding: 0.75rem 1.5rem; font-size: 0.875rem; font-weight: 600; color: var(--foreground); text-decoration: none; transition: transform 0.2s, border-color 0.2s;">+91 7569283071</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer style="border-top: 1px solid var(--border);">
+      <div style="margin: 0 auto; display: flex; max-width: 72rem; flex-direction: column; align-items: center; justify-content: space-between; gap: 0.75rem; padding: 2rem 1.5rem; font-size: 0.875rem; color: var(--muted-foreground);" class="sm-flex-row">
+        <p>© <span id="year"></span> Shaik Sameer Hussain</p>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="https://github.com/ShaikSameerHussain12" target="_blank" rel="noreferrer" style="color: var(--muted-foreground); text-decoration: none; transition: color 0.2s;">GitHub</a>
+          <a href="https://www.linkedin.com/in/shaik-sameer-hussain-425a012bb/" target="_blank" rel="noreferrer" style="color: var(--muted-foreground); text-decoration: none; transition: color 0.2s;">LinkedIn</a>
+          <a href="mailto:shaik.sameer.hussain12@gmail.com" style="color: var(--muted-foreground); text-decoration: none; transition: color 0.2s;">Email</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Gallery modal root -->
+  <div id="gallery-root"></div>
+
+  <style>
+    @media (min-width: 768px) {
+      .md-flex { display: flex !important; }
+      .md-py-32 { padding-top: 8rem !important; padding-bottom: 8rem !important; }
+      .md-grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+      .md-p-9 { padding: 2.25rem !important; }
+      .md-text-2xl { font-size: 1.5rem !important; }
+      .md-py-24 { padding-top: 6rem !important; padding-bottom: 6rem !important; }
+    }
+    @media (min-width: 1024px) {
+      .lg-grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+    }
+    @media (min-width: 640px) {
+      .sm-flex-row { flex-direction: row !important; }
+    }
+  </style>
+
+  <script>
+    const RAW = "https://raw.githubusercontent.com/ShaikSameerHussain12";
+
+    const projects = [
+      {
+        title: "FashionHub Profitability Analytics",
+        repo: "https://github.com/ShaikSameerHussain12/fashionhub-profitability-analytics",
+        stack: ["SQL Server (T-SQL)", "Power BI", "Star Schema"],
+        headline: "Margin fell 44.9% → 18.6% past a 21% discount — for 96 extra units.",
+        points: [
+          "Built a 7-table relational data model and 25+ T-SQL queries for a bucketed margin-sensitivity analysis across discount bands.",
+          "Delivered a 6-page Power BI dashboard recommending a discount-threshold policy to protect margin.",
+          "Flagged an out-of-scope inventory risk: 349 of 1,000 SKUs dead stock while others sold 13–17x current stock.",
+        ],
+        dashboards: [
+          { label: "Executive Summary", description: "Top-line revenue, profit, margin % and order volume with the headline discount-threshold finding.", src: `${RAW}/fashionhub-profitability-analytics/main/03_PowerBI/${encodeURIComponent("Executive Summary.png")}` },
+          { label: "Revenue and Profitability", description: "Revenue and margin trends broken down by month, category and profitability band.", src: `${RAW}/fashionhub-profitability-analytics/main/03_PowerBI/${encodeURIComponent("Revenue and Profitability.png")}` },
+          { label: "Pricing and Discount Analysis", description: "Discount-band sensitivity: where margin collapses from 44.9% to 18.6% past a 21% discount.", src: `${RAW}/fashionhub-profitability-analytics/main/03_PowerBI/${encodeURIComponent("Pricing and Discount Analysis.png")}` },
+          { label: "Customer Analytics", description: "Customer segments, repeat-purchase behaviour and spend distribution.", src: `${RAW}/fashionhub-profitability-analytics/main/03_PowerBI/${encodeURIComponent("Customer Analytics.png")}` },
+          { label: "Channel & Geographic Analysis", description: "Performance by sales channel and region, highlighting the strongest and weakest markets.", src: `${RAW}/fashionhub-profitability-analytics/main/03_PowerBI/${encodeURIComponent("Channel & Geographic Analysis.png")}` },
+          { label: "Product Insights & Recommendations", description: "SKU-level movers, dead-stock exposure and the recommended pricing and inventory actions.", src: `${RAW}/fashionhub-profitability-analytics/main/03_PowerBI/${encodeURIComponent("Product Insights & Recommendations.png")}` },
+        ],
+      },
+      {
+        title: "SecureBank Fraud & Risk Analytics",
+        repo: "https://github.com/ShaikSameerHussain12/securebank-fraud-risk-analytics",
+        stack: ["SQL Server (T-SQL)", "Power BI", "Segmentation"],
+        headline: "The bank's fraud flag was 97% driven by a single condition.",
+        points: [
+          "Analysed 2,512 transactions across 495 accounts with 20+ T-SQL queries to decompose the existing fraud-risk flag.",
+          "Segmented customers by occupation: students drove the highest total transaction value on the lowest average balance ($1,570 vs $8,979 for doctors).",
+          "Packaged findings into a 5-page executive Power BI dashboard.",
+        ],
+        dashboards: [
+          { label: "Executive Overview", description: "Portfolio KPIs: transaction volume, value, flagged-fraud rate and account coverage.", src: `${RAW}/securebank-fraud-risk-analytics/main/03_PowerBI/${encodeURIComponent("Executive Overview.png")}` },
+          { label: "Fraud & Risk Intelligence", description: "Decomposition of the fraud flag showing 97% of it driven by a single condition.", src: `${RAW}/securebank-fraud-risk-analytics/main/03_PowerBI/${encodeURIComponent("Fraud & Risk Intelligence.png")}` },
+          { label: "Customer Behavior Analytics", description: "Occupation and balance segmentation, including students' high spend on low balances.", src: `${RAW}/securebank-fraud-risk-analytics/main/03_PowerBI/${encodeURIComponent("Customer Behavior Analytics.png")}` },
+          { label: "Geographic Intelligence", description: "Transaction and risk concentration by city and region.", src: `${RAW}/securebank-fraud-risk-analytics/main/03_PowerBI/${encodeURIComponent("Geographic Intelligence .png")}` },
+          { label: "Operational Performance", description: "Channel throughput, transaction types and processing-performance trends.", src: `${RAW}/securebank-fraud-risk-analytics/main/03_PowerBI/${encodeURIComponent("Operational Performance .png")}` },
+        ],
+      },
+      {
+        title: "Customer Shopping Behavior Analysis",
+        repo: "https://github.com/ShaikSameerHussain12/customer-shopping-behavior-analysis",
+        stack: ["Python (Pandas)", "SQL", "Power BI"],
+        headline: "Subscribers generated less than half the revenue of non-subscribers.",
+        points: [
+          "Cleaned and feature-engineered a 3,900-row retail dataset in Python/Pandas.",
+          "Rebuilt flawed fixed-threshold customer segments using percentile-based segmentation.",
+          "Found 839 discounted customers still spent above average; revenue split $62,645 vs $170,436 informed discount and subscription redesign.",
+        ],
+        dashboards: [
+          { label: "customer_behavior_dashboard", description: "Percentile-based customer segments, subscription vs non-subscription revenue split and discount-usage behaviour.", src: `${RAW}/customer-shopping-behavior-analysis/main/${encodeURIComponent("customer_behavior_dashboard.png")}` },
+        ],
+      },
+      {
+        title: "Healthcare Access & Equity Analytics",
+        repo: "https://github.com/ShaikSameerHussain12/healthcare-access-equity-analytics",
+        stack: ["SQL", "Power BI", "Funnel Analysis"],
+        headline: "49.7% of patient transfers never reached a completed state.",
+        points: [
+          "Analysed access, referral and capacity data across a 300-facility, 15-district healthcare network.",
+          "Quantified a 12.4x disparity-index gap in hospital access between districts.",
+          "Directed a Power BI recommendation to prioritise hospital over pharmacy infrastructure investment.",
+        ],
+        dashboards: [
+          { label: "Executive Overview", description: "Network-wide access KPIs across 300 facilities and 15 districts.", src: `${RAW}/healthcare-access-equity-analytics/main/03_PowerBI/${encodeURIComponent("Executive Overview.png")}` },
+          { label: "Hospital Performance", description: "Facility-level capacity, utilisation and throughput comparison.", src: `${RAW}/healthcare-access-equity-analytics/main/03_PowerBI/${encodeURIComponent("Hospital Performance.png")}` },
+          { label: "Patient Analytics", description: "Patient demographics, referral funnel and the 49.7% incomplete-transfer gap.", src: `${RAW}/healthcare-access-equity-analytics/main/03_PowerBI/${encodeURIComponent("Patient Analytics.png")}` },
+          { label: "Workforce Analytics", description: "Staffing levels and workforce-to-patient ratios by facility type.", src: `${RAW}/healthcare-access-equity-analytics/main/03_PowerBI/${encodeURIComponent("Workforce Analytics.png")}` },
+          { label: "Emergency Operations", description: "Emergency demand, response times and surge pressure points.", src: `${RAW}/healthcare-access-equity-analytics/main/03_PowerBI/${encodeURIComponent("Emergency Operations.png")}` },
+          { label: "Municipality Dashboard", description: "District-level equity view quantifying the 12.4x hospital-access disparity.", src: `${RAW}/healthcare-access-equity-analytics/main/03_PowerBI/${encodeURIComponent("Municipality Dashboard .png")}` },
+        ],
+      },
+    ];
+
+    const skills = [
+      { group: "Programming & Querying", items: ["Python", "SQL", "T-SQL"] },
+      { group: "Data Analysis & ML", items: ["Pandas", "EDA", "Data Cleaning", "Feature Engineering", "Customer Segmentation", "Anomaly Detection", "Statistical Analysis"] },
+      { group: "Visualization & BI", items: ["Power BI", "Excel (Pivot Tables, VLOOKUP)", "Matplotlib", "Dashboard Development", "KPI Reporting"] },
+      { group: "Databases, Tools & Concepts", items: ["SQL Server (SSMS)", "Data Modeling (Star Schema)", "Jupyter Notebook", "Google Colab", "Git & GitHub", "Data Storytelling", "Stakeholder Communication"] },
+    ];
+
+    function renderProjects() {
+      const container = document.getElementById("projects-stack");
+      container.innerHTML = projects.map((p, i) => {
+        const stack = p.stack.map(s => `<span class="chip font-mono">${s}</span>`).join("");
+        const points = p.points.map(pt => `
+          <li style="display: flex; gap: 0.75rem;">
+            <span style="margin-top: 0.5rem; width: 0.375rem; height: 0.375rem; flex-shrink: 0; border-radius: 999px; background-color: var(--card-tint);"></span>
+            <span>${pt}</span>
+          </li>
+        `).join("");
+        return `
+          <article class="card-elevated project-card-${i}" style="position: sticky; z-index: ${i + 1}; top: calc(var(--stack-top) + ${i} * var(--stack-step)); margin-bottom: 2rem; display: flex; flex-direction: column; padding: 1.75rem; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.2);" class="md-p-9">
+            <div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.75rem;">
+              <h3 class="font-display" style="font-size: clamp(1.125rem, 2.5vw, 1.5rem); font-weight: 600;">${p.title}</h3>
+              <span class="font-mono" style="font-size: 0.75rem; color: var(--muted-foreground);">0${i + 1} / 0${projects.length}</span>
+            </div>
+            <p style="margin-top: 0.75rem; border-left: 2px solid var(--card-tint); padding-left: 1rem; font-size: 0.875rem; font-weight: 500; color: var(--card-tint);">${p.headline}</p>
+            <ul style="margin-top: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.875rem; color: var(--muted-foreground); list-style: none; padding: 0;">${points}</ul>
+            <div style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem;">${stack}</div>
+            <div style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem;">
+              <a href="${p.repo}" target="_blank" rel="noreferrer" style="display: inline-flex; border-radius: 999px; border: 1px solid var(--card-tint); padding: 0.5rem 1rem; font-size: 0.875rem; font-weight: 600; color: var(--card-tint); text-decoration: none; transition: transform 0.2s, border-color 0.2s;">View on GitHub →</a>
+              ${p.dashboards.length > 0 ? `<button type="button" data-gallery="${i}" style="border-radius: 999px; border: 1px solid var(--card-tint); padding: 0.5rem 1rem; font-size: 0.875rem; font-weight: 600; color: var(--card-tint); background: transparent; transition: transform 0.2s, border-color 0.2s;">View Dashboards</button>` : ""}
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function renderSkills() {
+      const container = document.getElementById("skills-grid");
+      container.innerHTML = skills.map((s, idx) => `
+        <div class="reveal card-elevated" style="--reveal-delay: ${idx * 100}ms; padding: 1.5rem;">
+          <h3 style="font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; color: var(--primary); text-transform: uppercase;">${s.group}</h3>
+          <div style="margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem;">
+            ${s.items.map(i => `<span class="chip" style="transition: border-color 0.2s, color 0.2s;">${i}</span>`).join("")}
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function openGallery(projectIndex) {
+      const project = projects[projectIndex];
+      const root = document.getElementById("gallery-root");
+      let currentIndex = null;
+
+      function render() {
+        const current = currentIndex !== null ? project.dashboards[currentIndex] : null;
+        root.innerHTML = `
+          <div role="dialog" aria-modal="true" aria-label="${project.title} dashboards" class="gallery-overlay" id="gallery-overlay">
+            <div class="gallery-container" onclick="event.stopPropagation()">
+              <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem;">
+                <div>
+                  <p class="font-mono" style="font-size: 0.75rem; letter-spacing: 0.15em; color: var(--primary); text-transform: uppercase;">
+                    ${current ? `Dashboard ${currentIndex + 1} of ${project.dashboards.length}` : `${project.dashboards.length} dashboard pages`}
+                  </p>
+                  <h3 class="font-display" style="margin-top: 0.25rem; font-size: clamp(1.125rem, 2.5vw, 1.5rem); font-weight: 600; color: var(--foreground);">${current ? current.label : project.title}</h3>
+                  <p style="margin-top: 0.25rem; font-size: 0.875rem; color: color-mix(in oklab, var(--foreground) 70%, transparent);">${current ? current.description : project.title}</p>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                  ${current ? `<button type="button" id="gallery-back" style="border-radius: 999px; border: 1px solid var(--border); background-color: var(--surface); padding: 0.5rem 1rem; font-size: 0.75rem; font-weight: 600; color: var(--foreground); transition: border-color 0.2s;">← All dashboards</button>` : ""}
+                  <button type="button" id="gallery-close" style="border-radius: 999px; border: 1px solid var(--border); background-color: var(--surface); padding: 0.5rem 1rem; font-size: 0.75rem; font-weight: 600; color: var(--foreground); transition: border-color 0.2s;">Close ✕</button>
+                </div>
+              </div>
+
+              ${current ? `
+                <div class="gallery-full">
+                  <img src="${current.src}" alt="${project.title} — ${current.label} dashboard" />
+                </div>
+                <div class="gallery-controls">
+                  <button type="button" id="gallery-prev" style="border-radius: 999px; border: 1px solid var(--border); background-color: var(--surface); padding: 0.5rem 1.25rem; font-size: 0.875rem; font-weight: 600; color: var(--foreground); transition: border-color 0.2s;">← Previous</button>
+                  <span class="font-mono" style="font-size: 0.75rem; color: color-mix(in oklab, var(--foreground) 70%, transparent);">${currentIndex + 1} / ${project.dashboards.length}</span>
+                  <button type="button" id="gallery-next" style="border-radius: 999px; border: 1px solid var(--border); background-color: var(--surface); padding: 0.5rem 1.25rem; font-size: 0.875rem; font-weight: 600; color: var(--foreground); transition: border-color 0.2s;">Next →</button>
+                </div>
+              ` : `
+                <div class="gallery-grid">
+                  <div class="gallery-grid-inner">
+                    ${project.dashboards.map((img, i) => `
+                      <button type="button" data-thumb="${i}" class="gallery-thumb">
+                        <div class="gallery-thumb-image">
+                          <img src="${img.src}" alt="${project.title} — ${img.label} dashboard preview" loading="lazy" />
+                        </div>
+                        <div class="gallery-thumb-body">
+                          <h4 class="font-mono" style="font-size: 0.875rem; font-weight: 600; color: var(--foreground);">${img.label}</h4>
+                          ${img.description ? `<p style="font-size: 0.875rem; line-height: 1.625; color: color-mix(in oklab, var(--foreground) 70%, transparent);">${img.description}</p>` : ""}
+                        </div>
+                      </button>
+                    `).join("")}
+                  </div>
+                </div>
+              `}
+            </div>
+          </div>
+        `;
+
+        const overlay = document.getElementById("gallery-overlay");
+        overlay.onclick = () => {
+          if (currentIndex !== null) {
+            currentIndex = null;
+            render();
+          } else {
+            closeGallery();
+          }
+        };
+
+        document.getElementById("gallery-close").onclick = closeGallery;
+        if (document.getElementById("gallery-back")) {
+          document.getElementById("gallery-back").onclick = () => { currentIndex = null; render(); };
+        }
+        if (document.getElementById("gallery-prev")) {
+          document.getElementById("gallery-prev").onclick = () => { currentIndex = (currentIndex - 1 + project.dashboards.length) % project.dashboards.length; render(); };
+        }
+        if (document.getElementById("gallery-next")) {
+          document.getElementById("gallery-next").onclick = () => { currentIndex = (currentIndex + 1) % project.dashboards.length; render(); };
+        }
+        document.querySelectorAll("[data-thumb]").forEach(btn => {
+          btn.onclick = () => { currentIndex = parseInt(btn.dataset.thumb); render(); };
+        });
+      }
+
+      function closeGallery() {
+        root.innerHTML = "";
+        document.body.style.overflow = "";
+        window.removeEventListener("keydown", onKey);
+      }
+
+      function onKey(e) {
+        if (e.key === "Escape") {
+          if (currentIndex !== null) { currentIndex = null; render(); }
+          else closeGallery();
+        }
+        if (currentIndex === null) return;
+        if (e.key === "ArrowRight") { currentIndex = (currentIndex + 1) % project.dashboards.length; render(); }
+        if (e.key === "ArrowLeft") { currentIndex = (currentIndex - 1 + project.dashboards.length) % project.dashboards.length; render(); }
+      }
+
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", onKey);
+      render();
+    }
+
+    function closeGallery() {
+      const root = document.getElementById("gallery-root");
+      root.innerHTML = "";
+      document.body.style.overflow = "";
+    }
+
+    function init() {
+      document.getElementById("year").textContent = new Date().getFullYear();
+      renderProjects();
+      renderSkills();
+
+      document.getElementById("projects-stack").addEventListener("click", e => {
+        const btn = e.target.closest("[data-gallery]");
+        if (btn) openGallery(parseInt(btn.dataset.gallery));
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+      document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+    }
+
+    init();
+  </script>
+</body>
+</html>
